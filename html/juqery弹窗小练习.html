@@ -15,7 +15,7 @@
 	#close{cursor:pointer;font-size:30px;position:absolute;right:10px;top:10px;}
 </style>
 </head>
-<body>
+<body style="height:2000px;">
 	<input type="button" value="弹框弹出" id="btn"/>
 	<!--<div id="box">
 		<p>用户名：<input type="text" /></p>
@@ -25,10 +25,20 @@
 	<script src="../js/jquery2.2.2-min.js"></script>
 	<script type="text/javascript">
 		$('#btn').click(function(){
+//			动态创建div
 			var oBox = $('<div id="box"><p>用户名：<input type="text" /></p><p>密码：<input type="text" /></p><div id="close">x</div></div>');
 			$('body').append(oBox);
 			oBox.css('left',($(window).width()-oBox.outerWidth())/2 );
 			oBox.css('top',($(window).height()-oBox.outerHeight())/2 );
+			//点击x按钮时删除class
+			$('#close').click(function(){
+				oBox.remove();
+			});
+//			当有滚动条的时候加上滚动的高度就可以居中了
+			$(window).on('resize scroll',function(){
+				oBox.css('left',($(window).width()-oBox.outerWidth())/2 );
+				oBox.css('top',($(window).height()-oBox.outerHeight())/2 + $(window).scrollTop());
+			})
 		})
 	</script>
 </body>
