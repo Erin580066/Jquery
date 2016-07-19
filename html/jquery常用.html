@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+	#box{width:100px;height:100px;background:red;position:absolute;}
+</style>
+</head>
+<body>
+	<!--<ul id="list">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>-->
+	<div id="box"></div>
+	<script src="../js/jquery2.2.2-min.js"></script>
+	<script type="text/javascript">
+//		alert($('li').size())
+//		参数一:下标  参数二:每一个元素
+//		$('li').each(function(i,elem){
+//			$(elem).html(i)
+//		})
+		var disX = 0;
+		var disY = 0;
+		$('#box').mousedown(function(ev){
+			
+			disX = ev.pageX - $(this).offset().left;
+			disY = ev.pageY -$(this).offset().top;
+			$(document).mousemove(function(ev){
+				$('#box').css('left',ev.pageX - disX);
+				$('#box').css('top',ev.pageY - disY);
+			});
+			$(document).mouseup(function(){
+				$(document).off();
+			});
+			return false;
+		})
+	</script>
+</body>
+</html>
