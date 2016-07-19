@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+	#box div{
+		width:100px;
+		height:100px;
+		background:red;
+		color:#fff;
+		text-align: center;
+		display:none;
+		font:bold 50px/100px "微软雅黑";
+	}
+	#box .active{background:yellow;}
+	#box .show{display:block;}
+</style>
+</head>
+<body>
+	<div id="box">
+		<input type="button" value="按钮一" class="active"/>
+		<input type="button" value="按钮二"/>
+		<input type="button" value="按钮三"/>
+		<div class="show">1</div>
+		<div>2</div>
+		<div>3</div>
+	</div>
+	<script src="../js/jquery2.2.2-min.js"></script>
+	<script type="text/javascript">
+		$('#box').find('input').click(function(){
+			$(this).addClass('active').siblings().removeClass('active');
+			$('#box div').removeClass('show').eq($(this).index()).addClass('show');
+		})
+	</script>
+</body>
+</html>
