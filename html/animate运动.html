@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+	#box{
+		width:100px;
+		height:100px;
+		background:red;
+	}
+</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script src="../js/jquery2.2.2-min.js"></script>
+	<script type="text/javascript">
+		$('#box').click(function(){
+//			$(this).animate({width : 300},3000)
+			$(this).animate({width : 300},3000).animate({height:300},1000 );
+			
+		})
+	</script>
+</body>
+</html>
